@@ -9,7 +9,7 @@ export sublist="$(az account subscription list --query "[].subscriptionId" -o ts
 export SP_ID="$(az keyvault secret show --name $SECRET_PRINCIPAL_ID --vault-name $VAULT_NAME --query value  -o tsv)"
 export SP_PW="$(az keyvault secret show --name $SECRET_PRINCIPAL_PW --vault-name $VAULT_NAME --query value -o tsv)"
 export TENANT="$(az keyvault secret show --name $SECRET_PRINCIPAL_TENANT --vault-name $VAULT_NAME --query value -o tsv)"
-export RESOURCE_LIST=`$(az resource list --tag gpcms_managed=true --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)`
+export RESOURCE_LIST="$(az resource list --tag gpcms_managed=true --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)"
 # #Login to Azure using keyvalt secrets
 az login --service-principal -u $SP_ID -p $SP_PW --tenant $TENANT
 
