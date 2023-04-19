@@ -17,6 +17,11 @@ jobs:
 
     - name: Azure CLI script file
       uses: azure/CLI@v1
+      env:
+        SECRET_PRINCIPAL_ID: ${{ secrets.SECRET_PRINCIPAL_ID }}
+        SECRET_PRINCIPAL_PW: ${{ secrets.SECRET_PRINCIPAL_PW }}
+        SECRET_PRINCIPAL_TENANT: ${{ secrets.SECRET_PRINCIPAL_TENANT }}
+        VAULT_NAME: ${{ secrets.VAULT_NAME }}
       with:
         azcliversion: 2.30.0
         inlineScript: |
