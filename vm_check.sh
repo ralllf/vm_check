@@ -3,9 +3,9 @@
 export sublist="$(az account subscription list --query "[].subscriptionId" -o tsv)"
 
 #Variables to get details of SP
-export SP_ID="$(az keyvault secret show --name ${{ secrets.secret_principal_id }} --vault-name ${{ secrets.vault_name }} --query value  -o tsv)"
-export SP_PW="$(az keyvault secret show --name ${{ secrets.secret_principal_pw }} --vault-name ${{ secrets.vault_name }} --query value -o tsv)"
-export TENANT="$(az keyvault secret show --name ${{ secrets.secret_principal_tetant }} --vault-name ${{ secrets.vault_name }} --query value -o tsv)"
+export SP_ID="$(az keyvault secret show --name ${{ secrets.SECRET_PRINCIPAL_ID }} --vault-name ${{ secrets.VAULT_NAME }} --query value  -o tsv)"
+export SP_PW="$(az keyvault secret show --name ${{ secrets.SECRET_PRINCIPAL_PW }} --vault-name ${{ secrets.VAULT_NAME }} --query value -o tsv)"
+export TENANT="$(az keyvault secret show --name ${{ secrets.SECRET_PRINCIPAL_TENANT }} --vault-name ${{ secrets.VAULT_NAME }} --query value -o tsv)"
 
 # #Login to Azure using keyvalt secrets
 az login --service-principal -u $SP_ID -p $SP_PW --tenant $TENANT
