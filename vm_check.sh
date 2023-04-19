@@ -14,4 +14,4 @@ export RESOURCE_LIST="$(az resource list --tag gpcms_managed=true --query "[?typ
 az login --service-principal -u $SP_ID -p $SP_PW --tenant $TENANT
 
 #Get data from Azure
-az vm show -d --ids $RESOURCE_LIST --query "[].{Name:name, OPERATING_SYSTEM:storageProfile.imageReference.offer, PRIVATE_IP_ADDRESS:privateIps, GPCMS_ENV_TAG:tags.gpcms_env}" -o tsv
+az vm show -d --ids $RESOURCE_LIST --query "{Name:name, OPERATING_SYSTEM:storageProfile.imageReference.offer, PRIVATE_IP_ADDRESS:privateIps, GPCMS_ENV_TAG:tags.gpcms_env}" -o tsv
