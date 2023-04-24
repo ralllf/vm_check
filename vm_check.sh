@@ -18,12 +18,12 @@ echo "NAME,OPERATING SYSTEM,PRIVATE IP ADDRESS,GPCMS_ENV (TAG),SUBSCRIPTION ID" 
 
 #Get data from Azure
 #For each subscription SP have access to
-for i in $(az account subscription list --query "[].subscriptionId" -o tsv);
-do;
+for i in $(az account subscription list --query "[].subscriptionId" -o tsv)
+do
 #Set a subscription one by one from list of subscriptions
 az account set --subscription $i
 #Create a VM list with tag gpcms_managed set to true
 export RESOURCE_LIST="$(az resource list --tag gpcms_managed=true --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)"
 #Add a list of VM with require data to csv
 az vm show -d --ids $RESOURCE_LIST --query $query -o tsv | sed 's/\t/,/g' | sed "s|$|\,${i}|" >> customer_vms.csv
-done;
+done
