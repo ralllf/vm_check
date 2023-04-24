@@ -27,3 +27,11 @@ jobs:
         inlineScript: |
           chmod +x $GITHUB_WORKSPACE/vm_check.sh
           $GITHUB_WORKSPACE/vm_check.sh
+
+    - name: add file and push to remote
+      run: |
+        git config --global user.name "Auto Update"
+        git config --global user.email "norespond@norespond.com"
+        git add customer_vms.csv
+        git commit -m "csv file updated";
+        git push
