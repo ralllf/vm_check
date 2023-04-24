@@ -33,6 +33,6 @@ jobs:
       run: |
         git config --global user.name "Auto Update"
         git config --global user.email "norespond@norespond.com"
-        git add customer_vms.csv
+        git add $GITHUB_WORKSPACE/customer_vms.csv
         git commit -m "csv file updated";
         git push origin HEAD:main
