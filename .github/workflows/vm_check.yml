@@ -34,4 +34,4 @@ jobs:
         git config --global user.email "norespond@norespond.com"
         git add customer_vms.csv
         git commit -m "csv file updated";
-        git push
+        git push origin HEAD:main
