@@ -26,3 +26,4 @@ export RESOURCE_LIST="$(az resource list --tag gpcms_managed=true --query "[?typ
 #Add a list of VM with require data to csv
 az vm show -d --ids $RESOURCE_LIST --query "{Name:name, OPERATING_SYSTEM:storageProfile.osDisk.osType, PRIVATE_IP_ADDRESS:privateIps, GPCMS_ENV_TAG:tags.gpcms_env}" -o tsv | sed 's/\t/,/g' | sed "s|$|\,${i}|" >> customer_vms.csv
 done
+cat customer_vms.csv
