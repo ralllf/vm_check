@@ -28,6 +28,7 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/vm_check.sh
           $GITHUB_WORKSPACE/vm_check.sh
 
+    - uses: actions/checkout@v1
     - name: add file and push to remote
       run: |
         git config --global user.name "Auto Update"
