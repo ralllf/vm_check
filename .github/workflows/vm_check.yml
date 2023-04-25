@@ -13,7 +13,9 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+      with:
+        ref: main
 
     - name: Azure CLI script file
       uses: azure/CLI@v1
