@@ -28,10 +28,13 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/vm_check.sh
           $GITHUB_WORKSPACE/vm_check.sh
 
-    - name: add file and push to remote
+    - name: Setup Git
       run: |
-        git config --global user.name "ralllf"
-        git config --global user.email "norespond@norespond.com"
-        git add ./customer_vms.csv
-        git commit -m "csv file updated";
-        git push origin HEAD:main
+        git config --global user.email "github-action@github.com"
+        git config --global user.name "GitHub Action"
+
+    - name: Commit and Push CSV file
+      run: |
+        git add customer_vms.csv
+        git commit -m "Update customer_vms.csv"
+        git push
