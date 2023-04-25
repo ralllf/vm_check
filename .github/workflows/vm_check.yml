@@ -36,7 +36,9 @@ jobs:
         git config --global user.name "GitHub Action"
 
     - name: Commit and Push CSV file
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
       run: |
+        git remote set-url origin https://${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
         git add customer_vms.csv
         git commit -m "Update customer_vms.csv"
-        git push
